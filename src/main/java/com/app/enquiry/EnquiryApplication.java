@@ -16,7 +16,7 @@ public class EnquiryApplication {
 	   ConfigurableApplicationContext context = SpringApplication.run(EnquiryApplication.class, args);
 	   JmsTemplate jmsTemplate = context.getBean(JmsTemplate.class);
 	   log.info("Sending message.");
-	   jmsTemplate.convertAndSend("mailbox", new Email("mymailid@xyz.com", "hi"));
+	   jmsTemplate.convertAndSend("DEV.QUEUE.1", new Email("mymailid@xyz.com", "hi"));
 	}
 
 }
