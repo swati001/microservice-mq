@@ -2,6 +2,17 @@ package com.app.enquiry.config;
 
 class JmsConfiguration {
   private static final Logger logger = LogManager.getLogger(JmsConfiguration.class);
+  
+  @Value("${queue}")
+    private String devQueue;
+ 
+ @Resource (name = "internalJmsConnectionFactory")
+ private ConnectionFactory connectionFactory;
+ 
+ @Resource
+ private CustomJmsListener customJmsListener;
+ 
+ private int maxConsumers = 3;
 
   @Bean
   public JmsListenerContainerFactory<?> myFactory(ConnectionFactory connectionFactory,
