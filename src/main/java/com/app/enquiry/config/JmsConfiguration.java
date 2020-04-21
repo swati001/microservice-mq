@@ -89,5 +89,4 @@ class JmsConfiguration {
     return new MQListener();
   }
 
-
 }
