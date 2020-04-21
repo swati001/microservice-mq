@@ -3,19 +3,19 @@ package com.app.enquiry.config;
 class JmsConfiguration {
   private static final Logger logger = LogManager.getLogger(JmsConfiguration.class);
   
-  @Value("${mq.queue}")
+  @Value("${ibm.mq.queue}")
   private String devQueue;
   
-  @Value("${mq.port}")
+  @Value("${ibm.mq.port}")
   private Integer port;
     
-  @Value("${mq.queue-manager}")
+  @Value("${ibm.mq.queueManager}")
   private String queueManager;
   
-  @Value("${mq.channel}")
+  @Value("${ibm.mq.channel}")
   private String channel;
   
-  @Value("${mq.receive-timeout}")
+  @Value("${ibm.mq.receiveTimeout}")
   private long receiveTimeout;
   
   @Resource (name = "internalJmsConnectionFactory")
