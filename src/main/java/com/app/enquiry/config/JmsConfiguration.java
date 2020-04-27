@@ -42,8 +42,8 @@ class JmsConfiguration {
     converter.setTypeIdPropertyName("_type");
     return converter;
   }
-  *
-  * /
+  
+  */
  
   @Bean
   public MQQueueConnectionFactory mqQueueConnectionFactory() {
