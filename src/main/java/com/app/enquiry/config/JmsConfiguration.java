@@ -1,7 +1,22 @@
 package com.app.enquiry.config;
 
+import com.app.enquiry.utils.CustomJmsListener;
+import com.ibm.mq.jms.MQQueueConnectionFactory;
+import com.ibm.msg.client.wmq.WMQConstants;
+import lombok.Value;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Bean;
+import org.springframework.jms.connection.JmsTransactionManager;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.listener.SimpleMessageListenerContainer;
+import org.springframework.transaction.PlatformTransactionManager;
+
+import javax.annotation.Resource;
+import javax.jms.ConnectionFactory;
+
+@Slf4j
 class JmsConfiguration {
-  private static final Logger logger = LogManager.getLogger(JmsConfiguration.class);
+ // private static final Logger logger = LogManager.getLogger(JmsConfiguration.class);
   
   @Value("${ibm.mq.queue}")
   private String devQueue;
@@ -18,7 +33,7 @@ class JmsConfiguration {
   @Value("${ibm.mq.receiveTimeout}")
   private long receiveTimeout;
   
-  @Resource (name = "internalJmsConnectionFactory")
+  @Resource(name = "internalJmsConnectionFactory")
   private ConnectionFactory connectionFactory;
 
   @Resource

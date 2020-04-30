@@ -26,7 +26,7 @@ private static Logger LOG = LoggerFactory.getLogger(CustomJmsListener.class);
             }
             catch (Exception e)
             {
-                LOG.error("Exception in CustomJmsListener: "+ex.getMessage());
+                LOG.error("Exception in CustomJmsListener: "+e.getMessage());
                
             }
             
