@@ -1,8 +1,8 @@
 package com.app.enquiry;
 
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,7 +14,7 @@ import org.springframework.jms.core.JmsTemplate;
 @SpringBootApplication
 @EnableJms
 public class EnquiryApplication {
-	private static Logger log = LoggerFactory.getLogger(EnquiryApplication.class);
+//	private static Logger log = LoggerFactory.getLogger(EnquiryApplication.class);
 	
 	@Autowired
 	private JmsTemplate jmsTemplate;
