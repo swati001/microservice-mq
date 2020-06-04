@@ -2,6 +2,13 @@
 <configuration>
 
     <property name="HOME_LOG" value="logs/app.log"/>
+    <springProfile name="default">
+        <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>%d{HH:mm:ss.SSS} %green([%thread]) %highlight(%level) %-5level %logger{50} - %msg%n</pattern>
+            </encoder>
+        </appender>
+    </springProfile>
     <springProfile name="prod">
         <appender name="FILE-ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
             <file>${HOME_LOG}</file>
@@ -18,19 +25,13 @@
             </encoder>
         </appender>
     </springProfile>
-    <springProfile name="default">
-        <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-            <encoder>
-                <pattern>%d{HH:mm:ss.SSS} %green([%thread]) %highlight(%level) %-5level %logger{50} - %msg%n</pattern>
-            </encoder>
-        </appender>
-    </springProfile>
-    <logger name="mylog" level="debug" additivity="false">
-        <appender-ref ref="FILE-ROLLING"/>
-    </logger>
+
+<!--    <logger name="mylog" level="debug" additivity="false">-->
+<!--        <appender-ref ref="FILE-ROLLING"/>-->
+<!--    </logger>-->
 
     <root level="error">
-        <appender-ref ref="FILE-ROLLING"/>
+        <appender-ref ref="CONSOLE"/>
     </root>
 
 </configuration>
