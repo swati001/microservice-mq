@@ -1,19 +1,29 @@
-import java.io.FileOutputStream;  
+package com.app.enquiry.utils;
+
+import com.app.enquiry.model.TestMsg;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.io.FileOutputStream;
   
 import javax.xml.bind.JAXBContext;  
 import javax.xml.bind.Marshaller;  
   
-  
-public class CustomJaxbMarshaller {  
-public void marshalObj(String[] args) throws Exception{  
-    JAXBContext contextObj = JAXBContext.newInstance(Test.class);  
+@Component
+public class CustomJaxbMarshaller {
+    @Autowired
+    public JaxbUtil jaxbCtx;
+
+public void marshalObj(Object obj) throws Exception{
+
+    JAXBContext contextObj = JaxbUtil.getJAXBContext(TestMsg.class);
   
     Marshaller marshallerObj = contextObj.createMarshaller();  
-    marshallerObj.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);  
-  
-    Test test=new Test(1,"Swati",1000);  
+    marshallerObj.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+    TestMsg test=(TestMsg)obj;
       
-    marshallerObj.marshal(test, new FileOutputStream("Test.xml"));  
+    marshallerObj.marshal(test, new FileOutputStream("TestMsg.xml"));
        
 }  
 }  

@@ -1,19 +1,27 @@
-import java.io.File;  
-import javax.xml.bind.JAXBContext;  
+package com.app.enquiry.utils;
+
+import com.app.enquiry.model.TestMsg;
+import lombok.extern.slf4j.XSlf4j;
+import org.springframework.stereotype.Component;
+
+import java.io.StringReader;
+import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;  
 import javax.xml.bind.Unmarshaller;  
-  
-public class XMLToObject {  
-public void unmarshal(String[] args) {  
+
+//@XSlf4j
+@Component
+public class CustomJaxbUnmarshaller {
+public void unmarshal(String args) throws Exception{
      try {    
-            File file = new File("test.xml");    
-            JAXBContext jaxbContext = JAXBContext.newInstance(Test.class);    
+            //File file = new File("Test.xml");
+            JAXBContext jaxbContext = JaxbUtil.getJAXBContext(TestMsg.class);
          
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();    
-            Test e=(Test) jaxbUnmarshaller.unmarshal(file);    
+            TestMsg e=(TestMsg) jaxbUnmarshaller.unmarshal(new StringReader(args));
             System.out.println(e.getId()+" "+e.getName()+" "+e.getSalary());  
               
-          } catch (JAXBException e) {e.printStackTrace(); }    
+          } catch (JAXBException e) {throw e;}
          
 }  
 }  
