@@ -55,4 +55,6 @@ public ResponseEntity<String> calculateSalary(@RequestBody String msg) {
     }
         return new ResponseEntity<String>("Resource not found", HttpStatus.NOT_FOUND);
     }
+
+
 }
